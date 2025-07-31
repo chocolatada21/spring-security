@@ -1,5 +1,6 @@
 package com.chocolatada.Spring.Security.configuration;
 
+import com.chocolatada.Spring.Security.entity.RoleEnum;
 import com.chocolatada.Spring.Security.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +27,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(httpRequests -> {
                     httpRequests.requestMatchers("/notSecured").permitAll();
                     httpRequests.requestMatchers("/secured").authenticated();
+                    httpRequests.requestMatchers("/admin").hasRole(String.valueOf(RoleEnum.ADMIN));
                     httpRequests.anyRequest().denyAll();
                 })
                 .build();

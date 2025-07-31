@@ -13,4 +13,8 @@ public class SecurityController {
     public String secured() {
         return "secured";
     }
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
 }
